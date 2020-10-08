@@ -1,15 +1,37 @@
 #include "logger.h"
 #include <iostream>
+class writeError
+{
+    writeError()
+    {
+
+    }
+    std::ostream operator<<(const char *t)
+    {
+        std::cout << t << std::endl;
+    }
+
+};
+
+class writeWarning
+{
+    std::ostream operator<<(const char *t)
+    {
+
+    }
+
+};
+
+
+
 int *m_logLevel;
-std::ostream *m_ErrorStream;
-std::istream *m_WarningStream;
-std::istream *m_InfoStream;
+writeError *errorClass;
 
 
 logger::logger(int level)
 {
     m_logLevel = new int(level);
-    m_ErrorStream = new std::ostream(std::cout.rdbuf());
+    errorClass = new writeError();
     //std::cout.rdbuf();
 }
 
@@ -18,20 +40,26 @@ logger::~logger()
     delete m_logLevel;
 }
 
-std::ostream *logger::logError()
-{
-    return m_ErrorStream;
-}
-
-std::istream *logger::logWarning()
+logger::writeError *logger::logError()
 {
 
 }
 
-std::istream *logger::logInfo()
-{
 
-}
 
+//std::ostream *logger::logError()
+//{
+//    //return m_errorStream;
+//}
+
+//std::istream *logger::logWarning()
+//{
+
+//}
+
+//std::istream *logger::logInfo()
+//{
+
+//}
 
 

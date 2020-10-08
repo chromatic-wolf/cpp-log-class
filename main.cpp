@@ -4,6 +4,6 @@
 int main()
 {
     logger *log = new logger();
-    *log->logError() << "sadsadad";
+
     return 0;
 }
